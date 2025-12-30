@@ -85,7 +85,7 @@ end
 
 discover_item = function(target, item)
   if not target[item] then
-print("discovered", item)
+--print("discovered", item)
     target[item] = true
     return true
   end
@@ -285,7 +285,6 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       elseif string.match(url_, "ajax%.kt") then
         return nil
       end
-print(url_, post_data)
       if post_data then
         table.insert(urls, {
           url=url_,
@@ -417,7 +416,6 @@ print(url_, post_data)
     html = read_file(file)
     if string.match(url, "_ajax%.kt") then
       json = cjson.decode(html)
-print(cjson.encode(json))
       if json["code"] ~= "SUC_PROC_0000" then
         error("Unsuccesfully received data.")
       end
@@ -437,7 +435,6 @@ print(cjson.encode(json))
         if item_type == "series" then
           for _, v in pairs(json["response"]) do
             check("https://www.myktoon.com/web/league/viewer.kt?lguetimesseq=" .. tostring(v["lguetimesseq"]))
-print("https://www.myktoon.com/web/league/viewer.kt?lguetimesseq=" .. tostring(v["lguetimesseq"]))
           end
         end
       end
